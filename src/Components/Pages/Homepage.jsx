@@ -1,8 +1,8 @@
 import React from 'react'
-import Navigation from '../Components/Navigation'
-import Home from '../Components/Home'
-import Footer from '../Components/Footer'
-import Busbook from '../Components/Busbook'
+import Navigation from '../Navigation'
+import Home from '../Home'
+import Footer from '../Footer'
+import Busbook from '../Busbook'
 
 export default function Homepage() {
   return (
