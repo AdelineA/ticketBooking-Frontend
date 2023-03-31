@@ -55,7 +55,7 @@ export default function Navigation() {
                     />
                   </svg>
                 <NavLink
-                  to="#"
+                  to="login"
                   class="text-base text-white font-bold "
                 >
                   LogIn 
