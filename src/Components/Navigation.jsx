@@ -6,8 +6,8 @@ import "./Home.css";
 export default function Navigation() {
   return (
     <div>
-      <nav className="fixed left-0 right-0 top-0 mb-4">
-        <div class="nav py-2 text-white">
+      <nav className="fixed top-0 mb-4 px-6 nav ">
+        <div class=" text-white">
           <div class="px-0.5 pt-0.5 lg:px-8 ">
             <nav class="flex items-center">
               <div class="flex lg:flex-1">
@@ -58,7 +58,7 @@ export default function Navigation() {
                   to="#"
                   class="text-base text-white font-bold "
                 >
-                  Log in 
+                  LogIn 
                 </NavLink>
               </div>
             </nav>

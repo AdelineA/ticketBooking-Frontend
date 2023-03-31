@@ -8,7 +8,7 @@ export default function Footer() {
     <div className='footer'>
         <div class="justify-center my-holder flex">
         <img src={Car} alt="" class="" />
-            <h1 class=" flex flex-wrap py-8 text-white text-xl ml-2 font-bold">
+            <h1 class=" flex flex-wrap py-8 text-white text-xl ml-0 font-bold">
              BusWise
            </h1>
         </div>
