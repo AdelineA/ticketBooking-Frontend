@@ -8,21 +8,21 @@ export default function Home() {
   return (
     <div class="">
       <div class="photo">
-        <div class="flex">
-          <div class="flex-col mt-32 px-14 mb-10">
-            <h1 class="colo text-2xl font-bold">
+        <div class="flex ml-32">
+          <div class="mt-36 mb-15 w-full">
+            <h1 class="colo text-2xl font-bold w-full">
               Welcome To Our Bus Booking System
             </h1>
             <p class="mt-6 text-xl font-normal ">
               The ultimate solution for hasle-free
             </p>
             <p class="text-xl font-normal ">Bus ticket booking!</p>
-            <button class="text-center border-2 w-28 h-8 text-sm colo mt-8 font-semibold ">
+            <button class="text-center border-2 w-28 h-8 text-sm colo mt-8 font-semibold hover:bg-cyan-950 hover:text-white ">
               Book Now
             </button>
           </div>
-          <div class="ml-12 mt-28">
-            <img src={Person} alt="" class="person bg-none"/>
+          <div class="mt-28">
+            <img src={Person} alt="" class="w-full"/>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function Home() {
               <NavLink to="">Booking status</NavLink>
             </div>
             <div class="flex lg:flex px-14 py-3">
-              <NavLink to="#" class="flex">
+              <NavLink to="#" class="flex flex-wrap relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -54,7 +54,7 @@ export default function Home() {
                       d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
                     />
                   </svg>
-                schedule
+                  <span>schedule</span>
               </NavLink>
             </div>
           </div>
