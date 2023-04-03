@@ -13,11 +13,11 @@ export default function Home() {
             <h1 class="colo text-2xl font-bold w-full">
               Welcome To Our Bus Booking System
             </h1>
-            <p class="mt-6 text-xl font-normal ">
+            <p class="mt-2 text-xl font-normal ">
               The ultimate solution for hasle-free
             </p>
             <p class="text-xl font-normal ">Bus ticket booking!</p>
-            <button class="text-center border-2 w-28 h-8 text-sm colo mt-8 font-semibold hover:bg-cyan-950 hover:text-white ">
+            <button class="text-center border-2 w-28 h-8 text-sm colo mt-6 font-semibold hover:bg-cyan-950 hover:text-white ">
               Book Now
             </button>
           </div>
@@ -38,8 +38,8 @@ export default function Home() {
             <div class="px-14 py-3">
               <NavLink to="">Booking status</NavLink>
             </div>
-            <div class="flex lg:flex px-14 py-3">
-              <NavLink to="#" class="flex flex-wrap relative">
+            <div class="flex lg:flex px-14 py-3 schedule">
+              <NavLink to="#" class="flex flex-wrap">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -54,7 +54,7 @@ export default function Home() {
                       d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
                     />
                   </svg>
-                  <span>schedule</span>
+                  schedule
               </NavLink>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
         <div class="flex mt-4 ml-8 ">
           <select
             id="cities"
-            class="border text-base rounded-lg border-gray-900 block w-fit px-6 py-2 "
+            class="border text-base rounded-lg border-gray-900 block outline-none w-fit px-6 py-2 "
           >
             <option selected>From :</option>
             <option value="RW">Kigali</option>
@@ -115,7 +115,7 @@ export default function Home() {
           </select>
           <select
             id="cities"
-            class=" border text-base rounded-lg border-gray-900 block w-fit px-6 py-2 ml-4"
+            class=" border text-base rounded-lg border-gray-900 block w-fit px-6 py-2 ml-4 outline-none"
           >
             <option selected>To :</option>
             <option value="RW">Kigali</option>
@@ -140,7 +140,7 @@ export default function Home() {
             <option value="RW">Nyabihu</option>
           </select>
           <div class="w-fit text-center px-6 py-3 mr-10 ml-8 rounded-lg block border border-gray-900 ">
-            <input type="date" class="text-gray-900" />
+            <input type="date" class="text-gray-900 outline-none" />
           </div>
         </div>
         <div>
@@ -156,7 +156,7 @@ export default function Home() {
         Cards.map((card)=>{
           return(
             <div class="max-w-sm px-4 py-6 rounded-lg overflow-hidden mt-10 testimony ">
-            <img class="w-20 h-20 justify-center rounded-full adel" src={card.img} alt="Sunset in the mountains"/>
+            <img class="w-20 h-20 justify-center rounded-full adel" src={card.img} alt="Adel"/>
             <div class="px-6 py-4">
               <p class="text-white text-base pt-8">
                 {card.paragraph}
