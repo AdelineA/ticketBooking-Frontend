@@ -26,11 +26,13 @@
 /*  */
 .div2{
     background-color: #4C747A;
-    border-radius: 1px;
+    border-radius: 8px;
+    
 }
 .div3{
     transform: translateY(-52PX);
     background-color: white;
+
 }
 .logi{
     display: flex;

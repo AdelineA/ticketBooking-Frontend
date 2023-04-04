@@ -4,7 +4,7 @@ import Person from '../../imgs/Person.png'
 
 export default function Signup() {
   return (
-    <div class="bg-gray-200">
+    <div class="bg-gray-100">
       <section class="bg-white items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 c1 ">
       <div class=" flex">
         <div class="flex flex-col items-center justify-center px-3 py-8 mx-auto md:h-screen lg:py-0">
