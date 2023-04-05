@@ -7,14 +7,17 @@ import './App.css';
 import Busbook from './Components/Busbook';
 import Signup from './Components/Login/Signup';
 import Login from './Components/Login/Login';
+import Services from './Components/Pages/Services';
+
 
 function App() {
   return (
     <div>
+      <Navigation/>
        <Routes>
         <Route path='/' element={<Homepage/>}/>
-        <Route path='nav' element={<Navigation/>}/>
         <Route path='home' element={<Home/>}/>
+        <Route path='service' element={<Services/>}/>
         <Route path='busbook' element={<Busbook/>}/>
         <Route path='footer' element={<Footer/>}/>
         <Route path='login' element={<Login/>}/>
