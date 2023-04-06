@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import dots from "../../imgs/dots.png";
 import Person from '../../imgs/Person.png'
 
 import './Login.css'
@@ -8,23 +7,19 @@ import './Login.css'
 
 
 export default function Login() {
+
   return (
-    <div class="bg-gray-100">
-      <section class="bg-white items-center justify-center px-6 py-10 mx-auto md:h-screen lg:py-0 c1">
-        <div class=" flex">
-        <div class="flex flex-col items-center justify-center px-1 py-10 mx-auto md:h-screen lg:py-0">
-          <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
-            <img
-              src={dots}
-              alt=""
-              class="w-20 h-20 bg-white text-white px-2 py-5 mt-6 ml-6"
-            />
+    <div>
+      <NavLink to="/"><button class="float-right mt-20 px-6 py-3 colo">Back</button></NavLink>
+      <section class="c1 ml-32 ">
+        <div class="flex items-center justify-center px-1 py-10 mx-auto md:h-screen lg:py-0 c3">
+          <div class="flex-col w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl mb-3 colo">
+            <form class="space-y-4 md:space-y-6" action="#">
+              <h1 class="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl mb-16 colo">
                 SIGN IN
               </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
-                <div>
+              <div>
                   <input
                     type="email"
                     name="email"
@@ -82,7 +77,7 @@ export default function Login() {
                     <hr class="border mt-3 ml-3 border-gray-200 w-32"/>
                   </label>
                 </div>
-                <div class="flex gap-5">
+                <div class="flex gap-5 mb-6">
                   <button
                     type="submit"
                     class="w-fit text-cyan-900 font-medium rounded-full text-sm px-3 border-2 border-cyan-900 py-2 text-center bg-white "
@@ -99,8 +94,7 @@ export default function Login() {
               </form>
             </div>
           </div>
-        </div>
-        <img src={Person} alt="" class="prs"/>
+          <img src={Person} alt="" class="prs"/>
         </div>
       </section>
     </div>

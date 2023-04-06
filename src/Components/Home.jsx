@@ -4,9 +4,10 @@ import Person from '../imgs/Person.png'
 import { NavLink } from "react-router-dom";
 import "./Home.css";
 
+
 export default function Home() {
   return (
-    <div class="">
+    <div>
       <div class="photo">
         <div class="flex ml-32">
           <div class="mt-36 mb-15 w-full">
@@ -22,13 +23,13 @@ export default function Home() {
             </button>
           </div>
           <div class="mt-28">
-            <img src={Person} alt="" class="w-full"/>
+            <img src={Person} alt="" class="p-0"/>
           </div>
         </div>
       </div>
       <div class="w-fit border-4 rounded-lg ml-52 div3">
         <div class="flex uppercase">
-          <div class="px-6 py-3 colo ">
+          <div class="px-6 py-3 ml-10 colo ">
             <NavLink to="">Book a ticket</NavLink>
           </div>
           <div class="div2 text-white flex ml-32 border rounded-lg">
