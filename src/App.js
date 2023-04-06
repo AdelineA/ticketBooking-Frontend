@@ -8,6 +8,7 @@ import Busbook from './Components/Busbook';
 import Signup from './Components/Login/Signup';
 import Login from './Components/Login/Login';
 import Services from './Components/Pages/Services';
+import Contact from './Components/Pages/Contact';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <Route path='footer' element={<Footer/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
-       
+        <Route path='/contact' element={<Contact/>}/>
       </Routes>
     </div>
   );
