@@ -1,6 +1,7 @@
 import React from 'react'
 import Phone from '../imgs/Phone.png'
 import "./Home.css";
+import { NavLink } from 'react-router-dom';
 
 export default function Busbook() {
   return (
@@ -17,7 +18,10 @@ export default function Busbook() {
            rest assured that your transactions are <br/>
            safe and secure.
         </p>
-        <button class="text-center border-2 w-32 h-10 rounded-lg text-sm mt-10 font-semibold btn">More</button>
+        <NavLink to="about">
+          <button class="text-center border-2 w-32 h-10 rounded-lg text-sm mt-10 font-semibold btn">More</button>
+        </NavLink>
+        
         </div>
        
     </div>

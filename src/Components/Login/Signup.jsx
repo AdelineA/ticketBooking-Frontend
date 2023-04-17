@@ -14,8 +14,34 @@ export default function Signup() {
                 Create and account
               </h1>
               <form class="space-y-4 md:space-y-6" action="#">
+              <div>
+                  <label for="email" class="block mb-1 text-xl font-bold colo ">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    name="text"
+                    id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
+                    placeholder="adelymug"
+                    required=""
+                  />
+                </div>
                 <div>
-                  <label for="email" class="block mb-2 text-xl font-bold colo ">
+                  <label for="email" class="block mb-1 text-xl font-bold colo ">
+                    Fullname
+                  </label>
+                  <input
+                    type="text"
+                    name="text"
+                    id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
+                    placeholder=""
+                    required=""
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block mb-1 text-xl font-bold colo ">
                     Your email
                   </label>
                   <input
@@ -30,7 +56,7 @@ export default function Signup() {
                 <div>
                   <label
                     for="password"
-                    class="block mb-2 text-xl font-bold colo"
+                    class="block mb-1 text-xl font-bold colo"
                   >
                     Password
                   </label>
@@ -46,7 +72,7 @@ export default function Signup() {
                 <div>
                   <label
                     for="confirm-password"
-                    class="block mb-2 text-xl font-bold colo"
+                    class="block mb-1 text-xl font-bold colo"
                   >
                     Confirm password
                   </label>

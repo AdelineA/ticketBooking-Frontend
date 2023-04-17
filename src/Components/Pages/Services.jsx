@@ -24,7 +24,7 @@ export default function Services() {
                 offer additional features such as ticket insurance,<br/>
                 refund protection, and ticket resale.
               </p>
-              <NavLink to="#">
+              <NavLink to="service">
                  <BsFillArrowRightCircleFill class="px-4 py-2 w-20 h-20 mt-10"/>
               </NavLink>
             </div>
@@ -41,7 +41,7 @@ export default function Services() {
                mobile app, while others may require them to <br/>
                contact customer support directly.
               </p>
-              <NavLink to="#">
+              <NavLink to="service">
                  <BsFillArrowRightCircleFill class="px-3 py-2 w-20 h-20 mt-10"/>
               </NavLink>
             </div>
