@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { BsInstagram} from "react-icons/bs";
-import { AiFillFacebook} from "react-icons/ai";
-import { BsTelegram} from "react-icons/bs";
+// import { AiFillTwitterCircle } from "react-icons/ai";
+// import { BsInstagram} from "react-icons/bs";
+// import { AiFillFacebook} from "react-icons/ai";
+// import { BsTelegram} from "react-icons/bs";
 import Car from "../imgs/Car.png";
 
 import "./Home.css";
@@ -43,28 +43,28 @@ export default function Footer() {
         >
           Social Media
           {areShown && (
-            <div class="py-3">
-              <div className="twiter">
+            <div class="py-3 w-fit">
+              <div class="">
                 <NavLink to="#">
-                  <AiFillTwitterCircle class="w-8 h-8" />
+                  {/* <AiFillTwitterCircle class="w-8 h-8" /> */}
                   Twitter
                 </NavLink>
               </div>
-              <div>
+              <div class="flex">
                 <NavLink to="#">
-                <BsInstagram class="w-8 h-8" />  
+                {/* <BsInstagram class="w-8 h-8" />   */}
                 Instagram
                 </NavLink>
               </div>
               <div class="flex">
                 <NavLink class="flex">
-                <AiFillFacebook class="w-8 h-8"/>
+                {/* <AiFillFacebook class="w-8 h-8"/> */}
                 Facebook
                 </NavLink>
               </div>
-              <div>
+              <div class="flex">
                 <NavLink>
-                <BsTelegram class="w-8 h-8"/>
+                {/* <BsTelegram class="w-8 h-8"/> */}
                 Telegram
                 </NavLink>
               </div>

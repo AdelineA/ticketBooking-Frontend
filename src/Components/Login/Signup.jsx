@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Person from '../../imgs/Person.png'
 
 
+
 export default function Signup() {
+  const [values,setValues]= useState({
+    name:'',
+    email:'',
+    password:''
+  })
+  const handleChange = (e) =>{
+    setValues({...values,[e.target.name]:[e.target.value]})
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    axios.post('http://localhost:5000',{
+      headers:{
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({values})
+    })
+    .then(res => res.json())
+    .then((data) =>{
+      console.log(data)
+    })
+    .catch(err => console.log(err));
+  }
   return (
     <div>
       <section class="c1 ml-32 py-10 ">
@@ -13,27 +37,15 @@ export default function Signup() {
               <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl colo">
                 Create and account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
-              <div>
-                  <label for="email" class="block mb-1 text-xl font-bold colo ">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    name="text"
-                    id="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
-                    placeholder="adelymug"
-                    required=""
-                  />
-                </div>
+              <form onSubmit={handleSubmit} class="space-y-4 md:space-y-6" action="#">
                 <div>
-                  <label for="email" class="block mb-1 text-xl font-bold colo ">
+                  <label for="name" class="block mb-1 text-xl font-bold colo ">
                     Fullname
                   </label>
                   <input
                     type="text"
-                    name="text"
+                    name="name"
+                    onChange={handleChange}
                     id="text"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
                     placeholder=""
@@ -47,6 +59,7 @@ export default function Signup() {
                   <input
                     type="email"
                     name="email"
+                    onChange={handleChange}
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
                     placeholder="name@company.com"
@@ -63,25 +76,27 @@ export default function Signup() {
                   <input
                     type="password"
                     name="password"
+                    onChange={handleChange}
                     id="password"
-                    placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5"
+                    placeholder="••••••••"
                     required=""
                   />
                 </div>
                 <div>
                   <label
-                    for="confirm-password"
+                    for="phone"
                     class="block mb-1 text-xl font-bold colo"
                   >
-                    Confirm password
+                    Phone 
                   </label>
                   <input
-                    type="confirm-password"
-                    name="confirm-password"
-                    id="confirm-password"
-                    placeholder="••••••••"
+                    type="number"
+                    name="phone_number"
+                    onChange={handleChange}
+                    id="phone_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
+                    placeholder="+2507•••••"
                     required=""
                   />
                 </div>
