@@ -80,5 +80,11 @@ width: max-content;
 }
 .copy{
     color: white;
-    margin-left: 60%;
+    margin-left: 57%;
+}
+.twiter{
+    display: flex;
+    /* flex-wrap: nowrap; */
+    border: 1px solid red;
+
 }

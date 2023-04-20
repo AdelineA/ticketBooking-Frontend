@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Person from '../../imgs/Person.png'
-
+import {FcGoogle } from "react-icons/fc";
+import {GrFacebookOption} from "react-icons/gr";
 import './Login.css'
 
 
@@ -10,7 +11,6 @@ export default function Login() {
 
   return (
     <div>
-      <NavLink to="/"><button class="float-right mt-20 px-6 py-3 colo">Back</button></NavLink>
       <section class="c1 ml-32 ">
         <div class="flex items-center justify-center px-1 py-10 mx-auto md:h-screen lg:py-0 c3">
           <div class="flex-col w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
@@ -77,19 +77,24 @@ export default function Login() {
                     <hr class="border mt-3 ml-3 border-gray-200 w-32"/>
                   </label>
                 </div>
-                <div class="flex gap-5 mb-6">
-                  <button
-                    type="submit"
-                    class="w-fit text-cyan-900 font-medium rounded-full text-sm px-3 border-2 border-cyan-900 py-2 text-center bg-white "
+                <div class="flex gap-3 mb-6">
+                  <NavLink to="https://en-gb.facebook.com/">
+                    <button
+                    type=""
+                    class="flex w-fit text-cyan-900 font-medium rounded-full text-sm px-1 border-2 border-cyan-900 py-2 text-center bg-white "
                   >
-                    Continue with Facebook
+                    <GrFacebookOption class="w-6 h-6"/>  Continue with Facebook
                   </button>
-                  <button
-                    type="submit"
-                    class="w-fit text-cyan-900 font-medium rounded-full text-sm px-3 border-2 border-cyan-900 py-2 text-center bg-white "
+                  </NavLink>
+                  <NavLink to="https://accounts.google.com/ServiceLogin?elo=1">
+                    <button
+                    type=""
+                    class="flex w-fit text-cyan-900 font-medium rounded-full text-sm px-1 border-2 border-cyan-900 py-2 text-center bg-white "
                   >
-                    Continue with Google
+                    <FcGoogle class="w-6 h-6 mr-1"/>Continue with Google
                   </button>
+                  </NavLink>
+                  
                 </div>
               </form>
             </div>

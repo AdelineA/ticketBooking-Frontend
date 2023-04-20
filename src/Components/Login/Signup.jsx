@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Person from '../../imgs/Person.png'
 
 
+
 export default function Signup() {
+  const [values, setValues]= useState({
+    username: '',
+    fullName: '',
+    email: '',
+    password:'',
+    phone:''
+  })
+  const handleChange = (e) =>{
+    setValues({...values, [e.target.name]: e.target.value})
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    // console.log(values)
+    axios.post('https://shy-gray-wombat-gear.cyclic.app/api/user/signup',{
+      headers:{
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({values})
+    })
+    .then(res => res.json())
+    .then((data) =>{
+      console.log(data)
+    })
+    .catch(err => console.log(err));
+  }
   return (
     <div>
       <section class="c1 ml-32 py-10 ">
@@ -11,52 +38,83 @@ export default function Signup() {
           <div class="flex-col w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl colo">
-                Create and account
+                Create an account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
+              <form onSubmit={handleSubmit} class="space-y-4 md:space-y-6" action="#">
+              <div>
+                  <label for="name" class="block mb-1 text-xl font-bold colo ">
+                    UserName
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    onChange={handleChange}
+                    id="username"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
+                    placeholder=""
+                    required
+                  />
+                </div>
                 <div>
-                  <label for="email" class="block mb-2 text-xl font-bold colo ">
+                  <label for="name" class="block mb-1 text-xl font-bold colo ">
+                    Fullname
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    onChange={handleChange}
+                    id="fullName"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block mb-1 text-xl font-bold colo ">
                     Your email
                   </label>
                   <input
                     type="email"
                     name="email"
+                    onChange={handleChange}
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
                     placeholder="name@company.com"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
                   <label
                     for="password"
-                    class="block mb-2 text-xl font-bold colo"
+                    class="block mb-1 text-xl font-bold colo"
                   >
                     Password
                   </label>
                   <input
                     type="password"
                     name="password"
+                    onChange={handleChange}
                     id="password"
-                    placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5"
-                    required=""
+                    placeholder="••••••••"
+                    required
                   />
                 </div>
                 <div>
                   <label
-                    for="confirm-password"
-                    class="block mb-2 text-xl font-bold colo"
+                    for="phone"
+                    class="block mb-1 text-xl font-bold colo"
                   >
-                    Confirm password
+                    Phone 
                   </label>
                   <input
-                    type="confirm-password"
-                    name="confirm-password"
-                    id="confirm-password"
-                    placeholder="••••••••"
+                    type="number"
+                    name="phone"
+                    onChange={handleChange}
+                    id="phone_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                    required=""
+                    placeholder="+2507•••••"
+                    required
                   />
                 </div>
                 <div class="flex items-start">
@@ -66,7 +124,7 @@ export default function Signup() {
                       aria-describedby="terms"
                       type="checkbox"
                       class="w-4 h-4 border border-gray-300 rounded bg-gray-50"
-                      required=""
+                      required
                     />
                   </div>
                   <div class="ml-3 text-sm">
@@ -76,7 +134,7 @@ export default function Signup() {
                         class="font-medium text-base hover:underline "
                         to="#"
                       >
-                        Terms and Conditions
+                       Terms and Conditions
                       </NavLink>
                     </label>
                   </div>
@@ -94,7 +152,7 @@ export default function Signup() {
                     to="/login"
                     class="font-bold text-base hover:underline "
                   >
-                    Login Here!
+                   Login Here!
                   </NavLink>
                   </div>
               </form>

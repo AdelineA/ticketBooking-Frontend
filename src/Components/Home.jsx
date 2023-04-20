@@ -18,9 +18,12 @@ export default function Home() {
               The ultimate solution for hasle-free<br/>
               Bus ticket booking!
             </p>
-            <button class="text-center border-2 w-28 h-8 text-sm colo mt-6 font-semibold hover:bg-cyan-950 hover:text-white ">
+            <NavLink to="signup">
+              <button class="text-center border-2 w-28 h-8 text-sm colo mt-6 font-semibold hover:bg-cyan-950 hover:text-white ">
               Sign Up
             </button>
+            </NavLink>
+            
           </div>
           <div class="mt-28">
             <img src={Person} alt="" class="p-0"/>
@@ -58,7 +61,6 @@ export default function Home() {
             class="border text-base rounded-lg border-gray-900 block outline-none w-48 ml-16 px-6 py-2 "
           >
             <option selected>Nbr of Tickets</option>
-            <option value="RW">0</option>
             <option value="RW">1</option>
             <option value="RW">2</option>
             <option value="RW">3</option>
