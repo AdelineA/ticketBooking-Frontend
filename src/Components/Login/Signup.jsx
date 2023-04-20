@@ -6,17 +6,20 @@ import Person from '../../imgs/Person.png'
 
 
 export default function Signup() {
-  const [values,setValues]= useState({
-    name:'',
-    email:'',
-    password:''
+  const [values, setValues]= useState({
+    username: '',
+    fullName: '',
+    email: '',
+    password:'',
+    phone:''
   })
   const handleChange = (e) =>{
-    setValues({...values,[e.target.name]:[e.target.value]})
+    setValues({...values, [e.target.name]: e.target.value})
   }
   const handleSubmit = (e)=>{
     e.preventDefault();
-    axios.post('http://localhost:5000',{
+    // console.log(values)
+    axios.post('https://shy-gray-wombat-gear.cyclic.app/api/user/signup',{
       headers:{
         'content-type': 'application/json',
       },
@@ -35,21 +38,35 @@ export default function Signup() {
           <div class="flex-col w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl colo">
-                Create and account
+                Create an account
               </h1>
               <form onSubmit={handleSubmit} class="space-y-4 md:space-y-6" action="#">
+              <div>
+                  <label for="name" class="block mb-1 text-xl font-bold colo ">
+                    UserName
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    onChange={handleChange}
+                    id="username"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
+                    placeholder=""
+                    required
+                  />
+                </div>
                 <div>
                   <label for="name" class="block mb-1 text-xl font-bold colo ">
                     Fullname
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    name="fullName"
                     onChange={handleChange}
-                    id="text"
+                    id="fullName"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
                     placeholder=""
-                    required=""
+                    required
                   />
                 </div>
                 <div>
@@ -63,7 +80,7 @@ export default function Signup() {
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
                     placeholder="name@company.com"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
@@ -80,7 +97,7 @@ export default function Signup() {
                     id="password"
                     class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5"
                     placeholder="••••••••"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
@@ -92,12 +109,12 @@ export default function Signup() {
                   </label>
                   <input
                     type="number"
-                    name="phone_number"
+                    name="phone"
                     onChange={handleChange}
                     id="phone_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     placeholder="+2507•••••"
-                    required=""
+                    required
                   />
                 </div>
                 <div class="flex items-start">
@@ -107,7 +124,7 @@ export default function Signup() {
                       aria-describedby="terms"
                       type="checkbox"
                       class="w-4 h-4 border border-gray-300 rounded bg-gray-50"
-                      required=""
+                      required
                     />
                   </div>
                   <div class="ml-3 text-sm">
@@ -117,7 +134,7 @@ export default function Signup() {
                         class="font-medium text-base hover:underline "
                         to="#"
                       >
-                        Terms and Conditions
+                       Terms and Conditions
                       </NavLink>
                     </label>
                   </div>
@@ -135,7 +152,7 @@ export default function Signup() {
                     to="/login"
                     class="font-bold text-base hover:underline "
                   >
-                    Login Here!
+                   Login Here!
                   </NavLink>
                   </div>
               </form>
