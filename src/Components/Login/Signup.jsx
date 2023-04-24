@@ -16,21 +16,27 @@ export default function Signup() {
   const handleChange = (e) =>{
     setValues({...values, [e.target.name]: e.target.value})
   }
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    // console.log(values)
-    axios.post('https://shy-gray-wombat-gear.cyclic.app/api/user/signup',{
-      headers:{
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({values})
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(values);
+  axios
+    .post(
+      "https://shy-gray-wombat-gear.cyclic.app/api/user/signup",
+      JSON.stringify(values),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
     })
-    .then(res => res.json())
-    .then((data) =>{
-      console.log(data)
-    })
-    .catch(err => console.log(err));
-  }
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
   return (
     <div>
       <section class="c1 ml-32 py-10 ">
@@ -43,7 +49,7 @@ export default function Signup() {
               <form onSubmit={handleSubmit} class="space-y-4 md:space-y-6" action="#">
               <div>
                   <label for="name" class="block mb-1 text-xl font-bold colo ">
-                    UserName
+                    Username
                   </label>
                   <input
                     type="text"
@@ -163,4 +169,4 @@ export default function Signup() {
       </section>
     </div>
   );
-}
+  }
