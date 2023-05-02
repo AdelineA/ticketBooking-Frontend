@@ -5,12 +5,15 @@ import { NavLink } from "react-router-dom";
 import Person from "../../imgs/Person.png";
 
 import "./Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [element, setElement] = useState({
     account: "",
     password: "",
   });
+
   const handleChange = (e) => {
     setElement({ ...element, [e.target.name]: e.target.value });
   };
@@ -23,9 +26,14 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data);
+        toast.success("Login successful");
+
         // save token to local storage or cookie for future authenticated requests
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
   };
 
   return (
@@ -42,6 +50,7 @@ export default function Login() {
                 class="space-y-4 md:space-y-6"
                 action="#"
               >
+                <ToastContainer />
                 <h1 class="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl mb-16 colo">
                   SIGN IN
                 </h1>

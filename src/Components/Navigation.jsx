@@ -20,23 +20,23 @@ export default function Navigation() {
               </div>
               <div class="hidden lg:flex lg:gap-x-12 font-bold">
                 <NavLink
-                  to="#"
+                  to="/"
                   class="text-base text-white font-bold"
                 >
                   Home
                 </NavLink>
 
                 <NavLink
-                  to="#"
+                  to="/service"
                   class="text-base text-white font-bold"
                 >
-                  About
+                  Service
                 </NavLink>
                 <NavLink
-                  to="#"
+                  to="/Busbook"
                   class="text-base text-white font-bold"
                 >
-                  Contact
+                  About Us
                 </NavLink>
               </div>
               <div class="flex lg:flex lg:flex-1 lg:justify-end font-bold mr-10 ">

@@ -10,21 +10,23 @@ import Signup from './Components/Login/Signup';
 import Login from './Components/Login/Login';
 import Services from './Components/Pages/Services';
 import Contact from './Components/Pages/Contact';
+import About from './Components/About';
 
 
 function App() {
   return (
     <div>
-      <Navigation/>
-       <Routes>
-        <Route path='/' element={<Homepage/>}/>
-        <Route path='home' element={<Home/>}/>
-        <Route path='service' element={<Services/>}/>
-        <Route path='busbook' element={<Busbook/>}/>
-        <Route path='footer' element={<Footer/>}/>
-        <Route path='login' element={<Login/>}/>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/contact' element={<Contact/>}/>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="home" element={<Home />} />
+        <Route path="service" element={<Services />} />
+        <Route path="busbook" element={<Busbook />} />
+        <Route path="footer" element={<Footer />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );

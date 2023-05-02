@@ -18,7 +18,7 @@ export default function Busbook() {
            rest assured that your transactions are <br/>
            safe and secure.
         </p>
-        <NavLink to="about">
+        <NavLink to="Busbook">
           <button class="text-center border-2 w-32 h-10 rounded-lg text-sm mt-10 font-semibold btn">More</button>
         </NavLink>
         

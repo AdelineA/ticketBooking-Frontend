@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Person from '../../imgs/Person.png'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function Signup() {
@@ -29,11 +30,13 @@ const handleSubmit = (e) => {
         },
       }
     )
-    .then((response) => {
-      console.log(response.data);
+    .then((res) => {
+      console.log(res.data);
+       toast.success("SignUp Successful!");
     })
-    .catch((error) => {
-      console.log(error);
+    .catch((err) => {
+      console.log(err);
+      toast.error("signup failed! please try again later")
     });
 };
 
@@ -46,8 +49,12 @@ const handleSubmit = (e) => {
               <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl colo">
                 Create an account
               </h1>
-              <form onSubmit={handleSubmit} class="space-y-4 md:space-y-6" action="#">
-              <div>
+              <form
+                onSubmit={handleSubmit}
+                class="space-y-4 md:space-y-6"
+                action="#"
+              >
+                <div>
                   <label for="name" class="block mb-1 text-xl font-bold colo ">
                     Username
                   </label>
@@ -107,11 +114,8 @@ const handleSubmit = (e) => {
                   />
                 </div>
                 <div>
-                  <label
-                    for="phone"
-                    class="block mb-1 text-xl font-bold colo"
-                  >
-                    Phone 
+                  <label for="phone" class="block mb-1 text-xl font-bold colo">
+                    Phone
                   </label>
                   <input
                     type="number"
@@ -140,7 +144,7 @@ const handleSubmit = (e) => {
                         class="font-medium text-base hover:underline "
                         to="#"
                       >
-                       Terms and Conditions
+                        Terms and Conditions
                       </NavLink>
                     </label>
                   </div>
@@ -153,19 +157,29 @@ const handleSubmit = (e) => {
                 </button>
                 <div class="text-sm font-light colo ">
                   Already have an account?{" "}
-               
                   <NavLink
                     to="/login"
                     class="font-bold text-base hover:underline "
                   >
-                   Login Here!
+                    Login Here!
                   </NavLink>
-                  </div>
+                </div>
               </form>
             </div>
           </div>
-          <img src={Person} alt="" class="prs"/>
-        </div> 
+          <img src={Person} alt="" class="prs" />
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </section>
     </div>
   );
