@@ -1,24 +1,28 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Person from "../../imgs/Person.png";
 
 import "./Login.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [element, setElement] = useState({
     account: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState("");
 
   const handleChange = (e) => {
     setElement({ ...element, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
     axios
       .post("https://shy-gray-wombat-gear.cyclic.app/api/user/login", {
         account: element.account,
@@ -29,18 +33,27 @@ export default function Login() {
         toast.success("Login successful");
 
         // save token to local storage or cookie for future authenticated requests
+        localStorage.setItem("myData", JSON.stringify(res.data));
+
+        setData(res.data); // update data state with the response data
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.message);
+        toast.error(err.response.data.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
-
+  useEffect(() => {
+    // Get the data from localStorage
+    const storedData = localStorage.getItem("myData");
+    if (storedData) {
+      setData(JSON.parse(storedData));
+    }
+  }, []);
   return (
     <div>
-      <NavLink to="/">
-        <button class="float-right mt-20 px-6 py-3 colo">Back</button>
-      </NavLink>
       <section class="c1 ml-32 ">
         <div class="flex items-center justify-center px-1 py-10 mx-auto md:h-screen lg:py-0 c3">
           <div class="flex-col w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
@@ -50,7 +63,6 @@ export default function Login() {
                 class="space-y-4 md:space-y-6"
                 action="#"
               >
-                <ToastContainer />
                 <h1 class="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl mb-16 colo">
                   SIGN IN
                 </h1>
@@ -61,7 +73,7 @@ export default function Login() {
                     onChange={handleChange}
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-full block w-full p-2.5 outline-none "
-                    placeholder="email or username"
+                    placeholder="email or userName"
                     required
                   />
                 </div>
@@ -104,9 +116,17 @@ export default function Login() {
                   </NavLink>
                   <button
                     type="submit"
-                    class="w-32 text-white font-medium rounded-full text-sm px-6 py-2.5 text-center bg-cyan-900 ml-8 "
+                    class="w-32 text-white font-medium rounded-full text-sm px-6 py-2.5 text-center bg-cyan-900 ml-8"
+                    disabled={isLoading}
                   >
-                    Log In
+                    {isLoading ? (
+                      <>
+                        <span>Loading...</span>
+                        <span class="ml-12 inline-block animate-spin rounded-full h-12 w-14 border-t-2 border-b-6 border-black"></span>
+                      </>
+                    ) : (
+                      "Log In"
+                    )}
                   </button>
                 </div>
                 <div class="flex px-6 mt-3 mb-3">

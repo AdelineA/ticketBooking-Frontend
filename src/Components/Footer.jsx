@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillTwitterCircle } from "react-icons/ai";
-import { BsInstagram} from "react-icons/bs";
-import { AiFillFacebook} from "react-icons/ai";
-import { BsTelegram} from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { AiFillFacebook } from "react-icons/ai";
+import { BsTelegram } from "react-icons/bs";
 import Car from "../imgs/Car.png";
 
 import "./Home.css";
@@ -106,7 +106,7 @@ export default function Footer() {
           />
           <button className="btn p-2 rounded-lg">Subscribe</button>
         </div>
-        <p class="copy">Copyright BusWise@2023</p>
+        <h1 class="copy">Copyright BusWise@2023</h1>
         <AiFillTwitterCircle class="w-6 h-6" />
         <BsInstagram class="w-6 h-6" />
         <AiFillFacebook class="w-6 h-6" />

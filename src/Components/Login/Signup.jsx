@@ -1,45 +1,61 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import Person from '../../imgs/Person.png'
+import Person from "../../imgs/Person.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 export default function Signup() {
-  const [values, setValues]= useState({
-    username: '',
-    fullName: '',
-    email: '',
-    password:'',
-    phone:''
-  })
-  const handleChange = (e) =>{
-    setValues({...values, [e.target.name]: e.target.value})
-  }
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log(values);
-  axios
-    .post(
-      "https://shy-gray-wombat-gear.cyclic.app/api/user/signup",
-      JSON.stringify(values),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    .then((res) => {
-      console.log(res.data);
-       toast.success("SignUp Successful!");
-    })
-    .catch((err) => {
-      console.log(err);
-      toast.error("signup failed! please try again later")
-    });
-};
+  const [values, setValues] = useState({
+    username: "",
+    fullName: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState("");
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
+    setIsLoading(true);
+    axios
+      .post(
+        "https://shy-gray-wombat-gear.cyclic.app/api/user/signup",
+        JSON.stringify(values),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        toast.success("SignUp Successful!");
+        // save token to local storage or cookie for future authenticated requests
+        localStorage.setItem("myData", JSON.stringify(res.data));
 
+        setData(res.data); // update data state with the response data
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  useEffect(() => {
+    // Get the data from localStorage
+    const storedData = localStorage.getItem("myData");
+    if (storedData) {
+      setData(JSON.parse(storedData));
+    }
+  }, []);
   return (
     <div>
       <section class="c1 ml-32 py-10 ">
@@ -56,7 +72,7 @@ const handleSubmit = (e) => {
               >
                 <div>
                   <label for="name" class="block mb-1 text-xl font-bold colo ">
-                    Username
+                    UserName
                   </label>
                   <input
                     type="text"
@@ -92,7 +108,7 @@ const handleSubmit = (e) => {
                     onChange={handleChange}
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 "
-                    placeholder="name@company.com"
+                    placeholder="class@company.com"
                     required
                   />
                 </div>
@@ -118,7 +134,7 @@ const handleSubmit = (e) => {
                     Phone
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
                     onChange={handleChange}
                     id="phone_number"
@@ -152,8 +168,16 @@ const handleSubmit = (e) => {
                 <button
                   type="submit"
                   class="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-cyan-900 "
+                  disabled={isLoading}
                 >
-                  Create an account
+                  {isLoading ? (
+                    <>
+                      <span>Loading...</span>
+                      <span class="ml-12 inline-block animate-spin rounded-full h-12 w-14 border-t-2 border-b-6 border-black"></span>
+                    </>
+                  ) : (
+                    "Create an account"
+                  )}
                 </button>
                 <div class="text-sm font-light colo ">
                   Already have an account?{" "}
@@ -170,7 +194,7 @@ const handleSubmit = (e) => {
           <img src={Person} alt="" class="prs" />
         </div>
         <ToastContainer
-          position="top-right"
+          position="top-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -179,8 +203,9 @@ const handleSubmit = (e) => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
+          theme="dark"
         />
       </section>
     </div>
   );
-  }
+}
