@@ -1,10 +1,11 @@
 import React from "react";
 import Person from "../imgs/Person.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Home.css";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+
 
 export default function Home() {
   const [attribute, setAttribute] = useState([]);
@@ -39,6 +40,7 @@ export default function Home() {
   useEffect(() => {
     fetchAttribute();
   }, []);
+  const Navigate = useNavigate();
   return (
     <div>
       <div className="photo">
@@ -208,7 +210,10 @@ export default function Home() {
             <option value="RW">Ngororero</option>
             <option value="RW">Nyabihu</option> */}
           </select>
-          <button class=" text-center text-white text-base ml-16 mb-3 px-5 py-3 w-48 border div2">
+          <button
+            onClick={() => Navigate("/getTicket")}
+            class=" text-center text-white text-base ml-16 mb-3 px-5 py-3 w-48 border div2"
+          >
             Get Ticket
           </button>
         </div>

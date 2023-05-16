@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Status from "./Components/Status";
 import Ticket from "./Components/ticket";
 import Book from "./Components/book";
-
+import Get from "./Components/getTicket";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route path="/Status" element={<Status />} />
         <Route path= "/ticket" element={<Ticket />} />
         <Route path="/book" element={<Book />} />
+        <Route path="/getTicket" element={<Get/>} />
       </Routes>
     </div>
   );
