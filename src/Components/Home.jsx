@@ -11,6 +11,7 @@ export default function Home() {
   const [attribute, setAttribute] = useState([]);
   const [selectedAgency, setSelectedAgency] = useState("");
   const [trips, setTrips] = useState("");
+  const [section, setSection] = useState("book");
   const fetchAttribute = async () => {
     try {
       const res = await axios.get(
@@ -67,177 +68,171 @@ export default function Home() {
       </div>
       <div className="w-fit border-4 rounded-lg ml-52 div3">
         <div className="flex uppercase">
-          <div className="px-6 py-3 ml-10  ">
-            <NavLink to="./book">Book a ticket</NavLink>
+          <div
+            className={`px-6 py-3 ml-10  cursor-pointer ${ section === "book" ? "" : "div2 text-white"}`}
+            onClick={() => setSection("book")}
+          >
+            <h1 className="">Book a ticket</h1>
           </div>
-          <div className="div2 text-white flex ml-32 border rounded-lg">
-            <div className="px-14 py-3">
-              <NavLink to="./Status">booking status</NavLink>
+          <div className="flex ml-32 border rounded-lg">
+            <div
+              className={`px-14 py-3 cursor-pointer ${ section === "status" ? "" : "div2 text-white" }`}
+              onClick={() => setSection("status")}
+            >
+              <h2 className="">booking status</h2>
             </div>
-            <div className="px-14 py-3 ml-10">
-              <NavLink to="./ticket">my tickets</NavLink>
+            <div
+              className={`px-14 py-3 ml-10 cursor-pointer ${section === "ticket" ? "" : "div2 text-white"}`}
+              onClick={() => setSection("ticket")}
+            >
+              <h3 className="">my tickets</h3>
             </div>
           </div>
         </div>
-        <div className="flex mt-10 ml-8">
-          <select
-            id="cities"
-            className="border text-base rounded-lg border-gray-900 block outline-none w-48 px-6 py-2 "
-            onChange={handleAgencyChange}
-          >
-            <option defaultValue>Agency</option>
-            {attribute &&
-              attribute.map((agency) => (
-                <option value={agency.name} key={agency._id}>
-                  {agency.name}
-                </option>
-              ))}
-          </select>
-          {/* <option value="RW">Volcano</option>
-            <option value="RW">Virunga</option>
-            <option value="RW">Stella</option>
-            <option value="RW">Capital</option>
-            <option value="RW">RITCO</option> */}
+        {/* FIRST PAGE START*/}
+        {section === "book" && (
+          <>
+            <div className="flex mt-10 ml-8">
+              <select
+                id="cities"
+                className="border text-base rounded-lg border-gray-900 block outline-none w-48 px-6 py-2 "
+                onChange={handleAgencyChange}
+              >
+                <option defaultValue>Agency</option>
+                {attribute &&
+                  attribute.map((agency) => (
+                    <option value={agency.name} key={agency._id}>
+                      {agency.name}
+                    </option>
+                  ))}
+              </select>
 
-          <select
-            id="cities"
-            class="border text-base rounded-lg border-gray-900 block outline-none w-48 ml-16 px-6 py-2 "
-          >
-            <option selected>Nbr of Tickets</option>
-            <option value="RW">1</option>
-            <option value="RW">2</option>
-            <option value="RW">3</option>
-            <option value="RW">4</option>
-            <option value="RW">5</option>
-          </select>
+              <select
+                id="cities"
+                class="border text-base rounded-lg border-gray-900 block outline-none w-48 ml-16 px-6 py-2 "
+              >
+                <option selected>Nbr of Tickets</option>
+                <option value="RW">1</option>
+                <option value="RW">2</option>
+                <option value="RW">3</option>
+                <option value="RW">4</option>
+                <option value="RW">5</option>
+              </select>
 
-          <div class="w-fit text-center px-5 py-2.5 mr-10 ml-16 rounded-lg block border border-gray-900 ">
-            <input type="date" class="text-gray-900 outline-none" />
+              <div class="w-fit text-center px-5 py-2.5 mr-10 ml-16 rounded-lg block border border-gray-900 ">
+                <input type="date" class="text-gray-900 outline-none" />
+              </div>
+            </div>
+            <div class="flex mt-4 ml-8 mb-5">
+              <select
+                id="cities"
+                class="border text-base rounded-lg border-gray-900 block outline-none mb-3 w-48 px-6 py-2 "
+              >
+                <option defaultValue>From :</option>
+                {trips &&
+                  trips
+                    .reduce(
+                      (uniqueTrips, currentTrip) =>
+                        uniqueTrips.find((t) => t.from === currentTrip.from)
+                          ? uniqueTrips
+                          : [...uniqueTrips, currentTrip],
+                      []
+                    )
+                    .map((trip) => (
+                      <option value={trip.from} key={trip._id}>
+                        {trip.from}
+                      </option>
+                    ))}
+              </select>
+              <select
+                id="cities"
+                class=" border text-base rounded-lg border-gray-900 block w-48 mb-3 px-6 py-2 ml-16 outline-none"
+              >
+                <option defaultValue>To :</option>
+                {trips &&
+                  trips
+                    .reduce(
+                      (uniqueTrips, currentTrip) =>
+                        uniqueTrips.find((t) => t.to === currentTrip.to)
+                          ? uniqueTrips
+                          : [...uniqueTrips, currentTrip],
+                      []
+                    )
+                    .map((trip) => (
+                      <option value={trip.to} key={trip._id}>
+                        {trip.to}
+                      </option>
+                    ))}
+              </select>
+              <button
+                onClick={() => Navigate("/getTicket")}
+                class=" text-center text-white text-base ml-16 mb-3 px-5 py-3 w-48 border div2"
+              >
+                Get Ticket
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* FIRST PAGE END */}
+
+        {/* SECOND PAGE START */}
+        {section === "status" && (
+          <div class="flex gap-5">
+            <label className="relative">
+              <input
+                type=""
+                className="w-[320px] h-[65px] mt-8 ml-5 bg-white border-2 rounded-lg border-[#4C747A] border-opacity-50 outline-none focus:text-[#4C747A] transition duration-100"
+              />
+              <span className="text-2xl text-[#4C747A] absolute left-0 top-10 mx-2 px-6">
+                All Ticket
+                <h1 class="absolute  top-1 bottom-2 ml-64 ">5</h1>
+              </span>
+            </label>
+            <label className="relative">
+              <input
+                type=""
+                className="w-[320px] h-[65px] mt-8 ml-5 bg-white border-2 rounded-lg border-[#4C747A] border-opacity-50 outline-none focus:text-gray-900 transition duration-100"
+              />
+              <span className="text-2xl text-[#4C747A] absolute left-0 top-10 mx-2 px-6 ">
+                Expired
+                <h1 class="absolute  top-1 bottom-2 ml-64 ">7</h1>
+              </span>
+            </label>
+            <label className="relative">
+              <input
+                type="text"
+                className="w-[320px] h-[65px] mt-8 ml-5 bg-white border-2 rounded-lg border-[#4C747A]  border-opacity-50 outline-none focus:text-gray-900 transition duration-100"
+              />
+              <span className="text-2xl text-[#4C747A] absolute left-0 top-10 mx-3 px-6 ">
+                Active
+                <h1 class="absolute  top-1 bottom-2 ml-64 ">10</h1>
+              </span>
+            </label>
           </div>
-        </div>
-        <div class="flex mt-4 ml-8 mb-5">
-          <select
-            id="cities"
-            class="border text-base rounded-lg border-gray-900 block outline-none mb-3 w-48 px-6 py-2 "
-          >
-            <option defaultValue>From :</option>
-            {trips &&
-              trips
-                .reduce(
-                  (uniqueTrips, currentTrip) =>
-                    uniqueTrips.find((t) => t.from === currentTrip.from)
-                      ? uniqueTrips
-                      : [...uniqueTrips, currentTrip],
-                  []
-                )
-                .map((trip) => (
-                  <option value={trip.from} key={trip._id}>
-                    {trip.from}
-                  </option>
-                ))}
-            {/* <tbody> */}
-            {/* {attribute.map((r, i) => (
-                <tr key={i}>
-                  <td>{r.from}</td>
-                </tr>
-              ))}
-            </tbody> */}
-            {/* <option value="RW">Kigali</option>
-            <option value="RW">Rubavu</option>
-            <option value="RW">Musanze</option>
-            <option value="RW">Rusizi</option>
-            <option value="RW">Nyanza</option>
-            <option value="RW">Gisagara</option>
-            <option value="RW">Huye</option>
-            <option value="RW">Karongi</option>
-            <option value="RW">Nyamasheke</option>
-            <option value="RW">Rutsiro</option>
-            <option value="RW">Gatsibo</option>
-            <option value="RW">Nyagatare</option>
-            <option value="RW">Rwamagana</option>
-            <option value="RW">Gicumbi</option>
-            <option value="RW">Kayonza</option>
-            <option value="RW">Kirehe</option>
-            <option value="RW">Muhanga</option>
-            <option value="RW">Ruhango</option>
-            <option value="RW">Ngororero</option>
-            <option value="RW">Nyabihu</option> */}
-          </select>
-          <select
-            id="cities"
-            class=" border text-base rounded-lg border-gray-900 block w-48 mb-3 px-6 py-2 ml-16 outline-none"
-          >
-            <option defaultValue>To :</option>
-            {trips &&
-              trips
-                .reduce(
-                  (uniqueTrips, currentTrip) =>
-                    uniqueTrips.find((t) => t.to === currentTrip.to)
-                      ? uniqueTrips
-                      : [...uniqueTrips, currentTrip],
-                  []
-                )
-                .map((trip) => (
-                  <option value={trip.to} key={trip._id}>
-                    {trip.to}
-                  </option>
-                ))}
-            {/* <tbody>
-              {attribute.map((r, i) => (
-                <tr key={i}>
-                  <td>{r.to}</td>
-                </tr>
-              ))}
-            </tbody> */}
-            {/* <option value="RW">Kigali</option>
-            <option value="RW">Rubavu</option>
-            <option value="RW">Musanze</option>
-            <option value="RW">Rusizi</option>
-            <option value="RW">Nyanza</option>
-            <option value="RW">Gisagara</option>
-            <option value="RW">Huye</option>
-            <option value="RW">Karongi</option>
-            <option value="RW">Nyamasheke</option>
-            <option value="RW">Rutsiro</option>
-            <option value="RW">Gatsibo</option>
-            <option value="RW">Nyagatare</option>
-            <option value="RW">Rwamagana</option>
-            <option value="RW">Gicumbi</option>
-            <option value="RW">Kayonza</option>
-            <option value="RW">Kirehe</option>
-            <option value="RW">Muhanga</option>
-            <option value="RW">Ruhango</option>
-            <option value="RW">Ngororero</option>
-            <option value="RW">Nyabihu</option> */}
-          </select>
-          <button
-            onClick={() => Navigate("/getTicket")}
-            class=" text-center text-white text-base ml-16 mb-3 px-5 py-3 w-48 border div2"
-          >
-            Get Ticket
-          </button>
-        </div>
+        )}
+        {/* SECOND PAGE START */}
+
+        {/* THIRD PAGE START */}
+        {section === "ticket" && (
+          <div class="flex mt-10 ml-8">
+            <div class="flex justify-between">
+              <h1 class="text-[#4C747A] ">Kigali</h1>
+              <h1 className="ml-16 mr-16 text-[#4C747A] ">to</h1>
+            </div>
+
+            <div class=" ml-20 mr-20  flex justify-between">
+              <h1 class=" text-[#4C747A] ">Rubavu</h1>
+            </div>
+
+            <div class="ml-20 mr-20 flex justify-between">
+              <h1 class=" text-[#4C747A]  ">View</h1>
+              <h1 className="ml-48 mr-48  text-[#4C747A] ">Reschedule</h1>
+            </div>
+          </div>
+        )}
+        {/* THIRD PAGE END */}
       </div>
-      {/* <div class="px-8 ">
-        <h2 class=" font-bold uppercase text-lg mt-10 mb-3 colo">Testimonies</h2>
-        <div class="flex gap-7 mt-6">
-        {
-        Cards.map((card)=>{
-          return(
-            <div class="max-w-sm px-4 py-6 rounded-lg overflow-hidden mt-10 testimony ">
-            <img class="w-20 h-20 justify-center rounded-full adel" src={card.img} alt="Adel"/>
-            <div class="px-6 py-4">
-              <p class="text-white text-base pt-8">
-                {card.paragraph}
-              </p>
-            </div>
-          </div>
-          )
-        })
-       }
-        </div>
-       
-      </div> */}
     </div>
   );
 }
